@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation'
 import PreviewModal from '../preview-modal'
 import usePreviewModal from '@/hooks/use-preview-modal'
 import useCart from '@/hooks/use-cart'
+import Button from './button'
 
 interface CardProps {
   data: Product
@@ -62,17 +63,23 @@ export default function ProductCard({
         </div>
       </div>
       <div>
-          <p className='font-semibold text-lg'>
-            {data.name}
-          </p>
-          <p className='text-sm text-gray-500'>
-            {data.category?.name}
-          </p>
+      <div>
+        <p className='font-semibold text-lg uppercase'>
+          {data.name}
+        </p>
+        <p className='text-sm text-gray-500 uppercase'>
+          {data.category?.name}
+        </p>
+      </div>
+      </div>
+        <div className='flex justify-between'>
+          <div>
+            <Currency value={data.price}/>
+          </div>
+          <Button className='bg-white text-green-800 hover:bg-green-800 hover:text-white border-green-800'>
+            <ShoppingCart size={15}/>
+          </Button>
         </div>
-        <div>
-          <Currency value={data.price}/>
-        </div>
-    </div>
-    
+      </div>
   )
 }
